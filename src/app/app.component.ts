@@ -7,8 +7,7 @@ import {BackendService} from './backend.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  tickets = this.backend.tickets();
-  users = this.backend.users();
 
-  constructor(private backend: BackendService) {}
+
+  constructor() {}
 }

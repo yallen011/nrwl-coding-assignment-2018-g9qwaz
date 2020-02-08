@@ -1,0 +1,55 @@
+<div class="pt-4" *ngIf="ticketObs | async as ticket; else loading">
+  
+  <nav class="nav nav-fill">
+    <a class="ml-3 text-left nav-item nav-link" [routerLink]="[ '/' ]">Back</a>
+    <div class="nav-item">
+    <button type="button" 
+      class="btn btn-primary ml-5" 
+      (click)="close(ticket.id)"
+      [disabled]='ticket.completed'>Close Ticket</button>
+    </div>
+</nav>
+
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-sm">
+        <h2>{{ticket.description}}</h2>
+      </div>
+    </div>
+    <div class="row pt-4">
+      <div class="col-sm">
+        <strong>Ticket Id:</strong> {{ticket.id}}
+      </div>
+      <div class="col-sm">
+        <strong>User Id:</strong> {{ticket.assigneeId}}
+      </div>
+      <div class="col-sm">
+        <strong>Status:</strong> {{getStatus(ticket.completed)}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm dropdown-divider" style="border-top-width:3px;"></div>
+    </div>
+    <div class="row p-3" *ngIf="!ticket.assigneeId">
+      <form class="form-inline" (ngSubmit)="onSubmit(ticket.id, id)" #form="ngForm">
+        <div class="form-group mb-2">
+          <label for="assigneeId">User Id:</label>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+          <input type="number" class="form-control" id="assigneeId" #id>
+        </div>
+        <button type="submit" class="btn btn-success mb-2">Assign</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template  #loading>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-primary m-5" role="status">
+      <span class="sr-only">Loading Ticket Details...</span>
+    </div>
+  </div>
+</ng-template>

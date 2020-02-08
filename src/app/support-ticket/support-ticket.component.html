@@ -1,0 +1,14 @@
+<a [routerLink]="['/details', ticket.id]" class="list-group-item mb-2 clearfix" role="button">
+    <div class="float-left">
+        <h4 class="text-body list-group-item-heading">{{ticket.description}}</h4>
+        <p class="text-secondary list-group-item-text">#{{ticket.id}}</p>
+    </div>
+    <div class="float-sm-right">
+     <p class="text-secondary" *ngIf="ticket.assigneeId ;else unassigned"><span class="pr-1">user:</span> {{ticket.assigneeId}}</p>
+    </div>
+  </a>
+
+  <ng-template  #unassigned>
+    <p class="text-secondary" >user:  unassigned</p>
+  </ng-template>
+<!-- <a [routerLink]="['/details', ticket.id]" routerLinkActive="active">Ticket: {{ticket.id}}, {{ticket.description}}</a>  -->

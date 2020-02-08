@@ -73,10 +73,13 @@ export class BackendService {
       assigneeId: null,
       completed: false
     };
-
+    console.log('new ticket: ', newTicket);
     return of(newTicket).pipe(
       delay(randomDelay()),
-      tap((ticket: Ticket) => this.storedTickets.push(ticket))
+      tap((ticket: Ticket) => {
+        this.storedTickets.push(ticket);
+        console.log('stored ticket: ', this.storedTickets);
+      })
     );
   }
 
