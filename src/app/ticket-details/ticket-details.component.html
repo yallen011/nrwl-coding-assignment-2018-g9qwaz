@@ -21,7 +21,7 @@
       <div class="col-sm">
         <strong>Ticket Id:</strong> {{ticket.id}}
       </div>
-      <div class="col-sm">
+      <div class="col-sm" *ngIf="ticket.assigneeId; else unassigned">
         <strong>User Id:</strong> {{ticket.assigneeId}}
       </div>
       <div class="col-sm">
@@ -45,6 +45,13 @@
     </div>
   </div>
 </div>
+
+
+<ng-template  #unassigned>
+  <div class="col-sm">
+    <span class="pr-1"><strong>User Id: </strong></span>Unassigned
+  </div>
+</ng-template>
 
 <ng-template  #loading>
   <div class="d-flex justify-content-center">
