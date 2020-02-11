@@ -14,7 +14,7 @@ export class TicketDetailsComponent implements OnInit {
   constructor(private backend: BackendService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
+    console.log('init called');
   }
 
   getStatus(completed: boolean) {
